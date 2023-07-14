@@ -8,7 +8,7 @@ class AuthController extends GetxController {
   }
 
   void initAuth() async {
-    await Future.delayed(const Duration(seconds: 20));
+    await Future.delayed(const Duration(seconds: 2));
     navigateToIntroduction();
   }
 

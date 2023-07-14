@@ -10,14 +10,15 @@ class QuestionPaperController extends GetxController {
     super.onReady();
   }
 
-  getAllPapers() async {
+  Future<void> getAllPapers() async {
     List<String> imgName = ["biology", "chemistry", "maths", "physics"];
 
     try {
       for (var img in imgName) {
         final imgUrl = await Get.find<FirebaseStorageService>().getImage(img);
-        allPaperImages
-            .add(imgUrl!); //we had to make sure that it isn't empty (!)
+        if (imgUrl != null) {
+          allPaperImages.addAll([imgUrl]); // Use addAll to ensure reactivity
+        }
       }
     } catch (e) {
       print(e);

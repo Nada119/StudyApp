@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppCircleButton extends StatelessWidget {
-  const AppCircleButton(
-      {super.key,
-      required this.child,
-      this.color,
-      this.onTap,
-      this.width = 60});
+  const AppCircleButton({
+    Key? key,
+    required this.child,
+    this.color,
+    this.width = 60,
+    this.onTap,
+  }) : super(key: key);
+
   final Widget child;
   final Color? color;
   final double width;
@@ -15,11 +17,11 @@ class AppCircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      type:
-          MaterialType.transparency, //to remove white background around button
-      clipBehavior: Clip.hardEdge, //bt3ml eh ?
+      type: MaterialType.transparency,
+      clipBehavior: Clip.hardEdge,
       shape: const CircleBorder(),
       child: InkWell(
+        onTap: onTap, // Pass the onTap callback here
         child: child,
       ),
     );

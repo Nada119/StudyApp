@@ -23,18 +23,21 @@ class AppIntroductionScreen extends StatelessWidget {
                   size: 65,
                 ),
                 const SizedBox(height: 40),
-                const Text(
+                Text(
+                  "This is a study app. You can use it as you want. If you understand how it works, you will be able to scale it. With this, you will master Firebase backend and Flutter frontend. - Nada Amr",
                   style: TextStyle(
                     fontSize: 18,
                     color: onSurfaceTextColor,
                     fontWeight: FontWeight.bold,
                   ),
-                  "This is a study app. You can use it as you want. If you understand how it works, you will be able to scale it. With this, you will master Firebase backend and Flutter frontend. - Nada Amr",
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 40),
                 AppCircleButton(
-                  onTap: () => null,
+                  onTap: () {
+                    // Navigate to the home screen page
+                    Get.offAllNamed("/home");
+                  },
                   child: const Icon(Icons.arrow_forward, size: 35),
                 ),
               ],

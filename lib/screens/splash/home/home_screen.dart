@@ -8,27 +8,34 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    QuestionPaperController _questionPaperController = Get.find();
+    final QuestionPaperController _questionPaperController = Get.find();
     return Scaffold(
-      body: ListView.separated(
-        itemBuilder: (BuildContext context, int index) {
-          return ClipRRect(
-            child: SizedBox(
-              height: 200,
-              width: 200,
-              child: FadeInImage(
-                image: NetworkImage(
-                  _questionPaperController.allPaperImages[index],
+      body: SingleChildScrollView(
+        child: Obx(
+          () => ListView.separated(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (BuildContext context, int index) {
+              return ClipRRect(
+                child: SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: FadeInImage(
+                    image: NetworkImage(
+                      _questionPaperController.allPaperImages[index],
+                    ),
+                    placeholder:
+                        AssetImage('assets/images/app_splash_logo.png'),
+                  ),
                 ),
-                placeholder: AssetImage('assets/images/app_splash_logo.png'),
-              ),
-            ),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return SizedBox(height: 20);
-        },
-        itemCount: _questionPaperController.allPaperImages.length,
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(height: 20);
+            },
+            itemCount: _questionPaperController.allPaperImages.length,
+          ),
+        ),
       ),
     );
   }
