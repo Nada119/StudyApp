@@ -15,7 +15,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   IntialBindings().dependencies();
   runApp(GetMaterialApp(
-    theme: Get.find<ThemeController>().darkTheme,
+    theme: Get.find<ThemeController>().lightTheme,
     getPages: AppRoutes.routes(),
   ));
 }

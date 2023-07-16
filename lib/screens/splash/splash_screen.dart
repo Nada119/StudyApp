@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(gradient: mainGradient(context)),
+          decoration: BoxDecoration(gradient: mainGradient()),
           child: Center(
             child: SizedBox(
               width: 200,

@@ -1,15 +1,13 @@
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_application_2/firebase_ref/refrences.dart';
 import 'package:get/get.dart';
 
 class FirebaseStorageService extends GetxService {
-  final Reference _firebaseStorage = FirebaseStorage.instance.ref();
-
   Future<String?> getImage(String? imgName) async {
     if (imgName == null) {
       return null;
     }
     try {
-      var urlRef = _firebaseStorage
+      var urlRef = firebaseStorage
           .child("question_paper_images")
           .child("${imgName.toLowerCase()}.png");
       var imgURL = await urlRef.getDownloadURL();

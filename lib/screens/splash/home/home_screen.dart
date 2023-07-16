@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_application_2/configs/themes/ui_parameters.dart';
 import 'package:flutter_application_2/controllers/question_paper/question_paper_controller.dart';
+import 'package:flutter_application_2/screens/splash/home/question_card.dart';
+import 'package:flutter_application_2/widgets/content_area.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,30 +12,21 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final QuestionPaperController _questionPaperController = Get.find();
     return Scaffold(
-      body: SingleChildScrollView(
+      body: ContentArea(
+        addPadding: false,
         child: Obx(
           () => ListView.separated(
+            padding: UIParameters.mobileScreenPadding,
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
-              return ClipRRect(
-                child: SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: FadeInImage(
-                    image: NetworkImage(
-                      _questionPaperController.allPaperImages[index],
-                    ),
-                    placeholder:
-                        AssetImage('assets/images/app_splash_logo.png'),
-                  ),
-                ),
+              return QuestionCard(
+                model: _questionPaperController.allPapers[index],
               );
             },
             separatorBuilder: (BuildContext context, int index) {
               return SizedBox(height: 20);
             },
-            itemCount: _questionPaperController.allPaperImages.length,
+            itemCount: _questionPaperController.allPapers.length,
           ),
         ),
       ),
