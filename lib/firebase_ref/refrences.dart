@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+//another type for singletone
 final fireStore = FirebaseFirestore.instance; //used through this app
 
 final questionPaperRF = fireStore.collection('questionPapers');
