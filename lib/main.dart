@@ -15,6 +15,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   IntialBindings().dependencies();
   runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
     theme: Get.find<ThemeController>().lightTheme,
     getPages: AppRoutes.routes(),
   ));

@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 //another type for singletone
 final fireStore = FirebaseFirestore.instance; //used through this app
 
+final userRF = fireStore.collection("users");
 final questionPaperRF = fireStore.collection('questionPapers');
 // create based on created collection id
 DocumentReference questionRF(
